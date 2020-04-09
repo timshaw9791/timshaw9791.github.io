@@ -1,5 +1,6 @@
 (function(){
 
+
     function reduce(array, combine, start) {
         var current = start;//6
         for (var element of array) {

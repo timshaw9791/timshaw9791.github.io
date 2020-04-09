@@ -1,21 +1,48 @@
 <html>
     <body>
-        <script src="./stat.js"></script>
-        <script src="./underscore.js"></script>
+        <h1 id="header">hello</h1>
 
-        <script>
+        <script src="jquery-3.4.1.js"></script>
+    <script>
+$(function(){
 
-var reduce=3;
-var data=[
-    {name:'计算机安装与维护',credit:2}
-    ,{name:'静态网页制作',credit:2}
-    ,{name:'计算机编程基础',credit:4}
-    ,{name:'大学英语',credit:2}
-    ,{name:'软件技术导论',credit:2}
-];
-console.log(my.max(data));
-console.log(_.max(data,function(it){return it.credit}));
-        </script>
+    $("#header").text($("#header").text()+"!!!!");
+
+})
+
+
+
+
+
+
+var t=document.getElementById("header");
+t.innerText=t.innerText+"正在直播!!!!";
+
+        var value=11;
+        var initvalue=22;//parseFloat(prompt("请输入初始值",22))
+
+        function  addition(){
+            var value=initvalue;
+            var count=0;
+
+            return function add(x){
+                value=value+x;
+                count++;
+                if(count==2){
+                console.log(value);
+            }
+            }
+
+            
+        }
+
+        var func=addition();
+
+        func(33);
+        func(44);
+
+
+    </script>
 
 
     </body>
