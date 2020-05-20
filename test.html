@@ -6,15 +6,26 @@
         <script src="jquery-3.4.1.js"></script>
         <script src="underscore.js"></script>
 
+        <input id="coursename" />
+        <button id="btn">显示学分</button>
+        <div id="divcredit"></div>
+
     <script>
 
 
 $(function(){
 
-    $.get("http://localhost:8585/data.json", function(data){
+    $.post("http://localhost:8585/data.json", function(data){
         _.each(data, function(item){
             $("ul").append("<li>"+item.name+"(学分："+item.credit+")"+"</li>");
     });
+
+    $("#btn").click(function(){
+        $.post("http://localhost:8585/creditByName?name="+$("#coursename").val(), function(data){
+             $("#divcredit").text(data);
+        });
+    })
+    
   
 
           
