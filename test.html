@@ -21,7 +21,7 @@ $(function(){
     });
 
     $("#btn").click(function(){
-        $.post("http://localhost:8585/creditByName?name="+$("#coursename").val(), function(data){
+        $.post("http://localhost:8585/creditByName",{name:$("#coursename").val()}, function(data){
              $("#divcredit").text(data);
         });
     })
