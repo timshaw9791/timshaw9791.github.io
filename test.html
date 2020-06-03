@@ -21,8 +21,13 @@ $(function(){
     });
 
     $("#btn").click(function(){
-        $.post("http://localhost:8585/creditByName",{name:$("#coursename").val()}, function(data){
-             $("#divcredit").text(data);
+        $.ajax({method:"POST"
+            ,contentType:"application/json"
+            ,url:"http://192.168.1.110:8585/creditByName"
+            ,data:JSON.stringify({name:$("#coursename").val()})
+            ,success:function(data){
+                $("#divcredit").text(data);
+            }
         });
     })
     
