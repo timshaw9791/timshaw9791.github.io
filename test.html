@@ -15,9 +15,18 @@
 
 $(function(){
 
-    $.post("http://localhost:8585/data.json", function(data){
-        _.each(data, function(item){
-            $("ul").append("<li>"+item.name+"(学分："+item.credit+")"+"</li>");
+    $.ajax({method:"POST"
+        ,url:"http://localhost:8585/data.json"
+        ,crossDomain: true
+        ,xhrFields: {
+                withCredentials: true
+        }
+        ,success:function(data){
+   // $.post("http://localhost:8585/data.json", function(data){
+            _.each(data, function(item){
+             $("ul").append("<li>"+item.name+"(学分："+item.credit+")"+"</li>");
+            });
+        }
     });
 
     $("#btn").click(function(){
@@ -30,15 +39,11 @@ $(function(){
             }
         });
     })
-    
-  
+
 
           
 });
 
-    
-
-})
 
 
 
