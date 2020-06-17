@@ -32,21 +32,19 @@ $(function(){
     $("#btn").click(function(){
         $.ajax({method:"POST"
             ,contentType:"application/json"
-            ,url:"http://192.168.1.110:8585/creditByName"
+            ,crossDomain: true
+            ,xhrFields: {
+                withCredentials: true
+            }
+            ,url:"http://localhost:8585/creditByName"
             ,data:JSON.stringify({name:$("#coursename").val()})
             ,success:function(data){
                 $("#divcredit").text(data);
             }
         });
     })
-
-
           
 });
-
-
-
-
 
     </script>
 

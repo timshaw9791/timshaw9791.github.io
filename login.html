@@ -11,13 +11,19 @@
 
 $(function(){
     $("#login").click(function(){
-        $.post("http://localhost:8585/login", 
-            {username:$("#username").val(),password:$("#password").val()}
-            ,function(data){   
+        $.ajax({
+            method:"POST"
+            ,url:"http://localhost:8585/login", 
+            data:JSON.stringify({username:$("#username").val(),password:$("#password").val()})
+            ,crossDomain: true
+            ,xhrFields: {
+                withCredentials: true
+            }
+            ,success:function(data){   
                 if(data){
                     window.location.href="./test.html"
                 }
-            });
+            }});
     })
 
 })
