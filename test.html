@@ -9,6 +9,7 @@
         <input id="coursename" />
         <button id="btn">显示学分</button>
         <div id="divcredit"></div>
+        <button id="btnlogout">退出</button>
 
     <script>
 
@@ -29,15 +30,26 @@ $(function(){
         }
     });
 
-    $("#btn").click(function(){
-        $.ajax({method:"POST"
-            ,contentType:"application/json"
-            ,crossDomain: true
+$("#btnlogout").click(
+    function(){
+        $.ajax({method:"GET"
             ,xhrFields: {
                 withCredentials: true
             }
-            ,url:"http://localhost:8585/creditByName"
-            ,data:JSON.stringify({name:$("#coursename").val()})
+            ,url:"http://localhost:8585/logout"
+            ,success:function(data){
+               console.log(data)
+               window.location.href="./login.html"
+            }
+        });
+    }
+);
+    $("#btn").click(function(){
+        $.ajax({method:"POST"
+            ,xhrFields: {
+                withCredentials: true
+            }
+            ,url:"http://localhost:8585/creditByName?name="+$("#coursename").val()
             ,success:function(data){
                 $("#divcredit").text(data);
             }
