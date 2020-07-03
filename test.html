@@ -10,12 +10,30 @@
         <button id="btn">显示学分</button>
         <div id="divcredit"></div>
         <button id="btnlogout">退出</button>
+        <button id="btnAdd">增加课程</button>
 
     <script>
 
 
 $(function(){
 
+
+    $("#btnAdd").click(
+        function(){
+        var course={name:"新课程",credit:3};
+        $.ajax({method:"POST"
+        ,url:"http://localhost:8585/addCourse?name="+course.name+"&credit="+course.credit
+        ,xhrFields: {
+                withCredentials: true
+        }
+        ,success:function(data){
+        }
+    });
+    });
+
+
+    
+    
     $.ajax({method:"POST"
         ,url:"http://localhost:8585/data.json"
         ,crossDomain: true
@@ -25,7 +43,7 @@ $(function(){
         ,success:function(data){
    // $.post("http://localhost:8585/data.json", function(data){
             _.each(data, function(item){
-             $("ul").append("<li>"+item.name+"(学分："+item.credit+")"+"</li>");
+             $("ul").append("<li>"+item.NAME+"(学分："+item.CREDIT+")"+"</li>");
             });
         }
     });
